@@ -1,5 +1,3 @@
-
-
 # Examen del Tercer Parcial 📚
 
 Este es un proyecto de examen para el tercer parcial de **Ingeniería de Sistemas**, desarrollado con las siguientes tecnologías:
