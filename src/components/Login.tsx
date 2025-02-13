@@ -34,8 +34,9 @@ const Login: React.FC = () => {
         <div className="space-y-4">
           {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
+              id="fullName"
               type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -46,8 +47,9 @@ const Login: React.FC = () => {
 
           {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
+              id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -58,9 +60,10 @@ const Login: React.FC = () => {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <div className="relative">
               <input
+                id="password"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -79,32 +82,30 @@ const Login: React.FC = () => {
 
           {/* Phone Number con bandera dentro del input */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">Phone Number</label>
             <div className="relative">
-            <PhoneInput
-              international
-              defaultCountry="US"
-              value={phoneNumber}
-              onChange={(value) => setPhoneNumber(value || '')} // ✅ Se asegura de manejar undefined correctamente
-              className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base md:text-lg"
-            />
-
+              <PhoneInput
+                id="phoneNumber"
+                international
+                defaultCountry="US"
+                value={phoneNumber}
+                onChange={(value) => setPhoneNumber(value || '')} // ✅ Se asegura de manejar undefined correctamente
+                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base md:text-lg"
+              />
             </div>
           </div>
 
           {/* Date of Birth */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
-              <input
-                type="date"
-                value={dob}
-                onChange={(e) => setDob(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 
-                text-base md:text-lg h-11" // Asegura que el alto sea uniforme
+            <label htmlFor="dob" className="block text-sm font-medium text-gray-700">Date of Birth</label>
+            <input
+              id="dob"
+              type="date"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base md:text-lg h-11"
               required
-                 />
-
+            />
           </div>
 
           {/* Submit Button */}

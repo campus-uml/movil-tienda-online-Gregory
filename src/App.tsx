@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './components/ui/Login';
+import Login from './components/Login';
 
 const App: React.FC = () => {
   return (
