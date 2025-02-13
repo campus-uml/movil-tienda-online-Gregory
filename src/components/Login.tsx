@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
-import { Eye, EyeOff } from 'react-feather';
+import { Eye, EyeOff, ArrowLeft } from 'react-feather'; // Importa ArrowLeft
 
 const Login: React.FC = () => {
   const [fullName, setFullName] = useState('');
@@ -26,8 +26,16 @@ const Login: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <form 
         onSubmit={handleSubmit} 
-        className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg"
+        className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg relative" // Agrega "relative" aquí
       >
+        {/* Flecha para retroceder dentro del formulario */}
+        <a
+          href="/" // Cambia esta ruta por la que desees (por ejemplo, "/login" o "/home")
+          className="absolute top-6 left-6 text-gray-700 hover:text-gray-900 transition-colors duration-200"
+        >
+          <ArrowLeft className="h-6 w-6" /> {/* Ícono de flecha */}
+        </a>
+
         <h2 className="text-2xl md:text-3xl font-bold text-center">Sign Up</h2>
         <p className="text-sm md:text-base text-gray-600 text-center mt-4 mb-6">Please type your information below</p>
         
@@ -80,7 +88,7 @@ const Login: React.FC = () => {
             </div>
           </div>
 
-          {/* Phone Number con bandera dentro del input */}
+          {/* Phone Number */}
           <div>
             <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">Phone Number</label>
             <div className="relative">
@@ -89,7 +97,7 @@ const Login: React.FC = () => {
                 international
                 defaultCountry="US"
                 value={phoneNumber}
-                onChange={(value) => setPhoneNumber(value || '')} // ✅ Se asegura de manejar undefined correctamente
+                onChange={(value) => setPhoneNumber(value || '')}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base md:text-lg"
               />
             </div>
