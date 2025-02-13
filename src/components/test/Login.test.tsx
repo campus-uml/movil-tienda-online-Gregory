@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'; // Importa jest-dom para extender expect
 import Login from '../Login'; // Importa el componente desde el mismo directorio
+import { vi } from 'vitest';
 
 describe('Login Component', () => {
   it('matches the snapshot', () => {
@@ -57,32 +58,30 @@ describe('Login Component', () => {
   });
 
   it('submits the form with the correct data', () => {
-    // Verifica si estamos en un entorno de pruebas antes de usar vi
-    if (process.env.NODE_ENV === 'test') {
-      const consoleSpy = vi.spyOn(console, 'log'); // Usa vi solo en pruebas
-      render(<Login />);
+    // Mockea console.log solo en pruebas
+    const consoleSpy = vi.spyOn(console, 'log');
+    render(<Login />);
 
-      // Simula la entrada de datos
-      fireEvent.change(screen.getByLabelText('Full Name'), { target: { value: 'John Doe' } });
-      fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'john@example.com' } });
-      fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'password123' } });
-      fireEvent.change(screen.getByLabelText('Phone Number'), { target: { value: '+1234567890' } });
-      fireEvent.change(screen.getByLabelText('Date of Birth'), { target: { value: '1990-01-01' } });
+    // Simula la entrada de datos
+    fireEvent.change(screen.getByLabelText('Full Name'), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'john@example.com' } });
+    fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'password123' } });
+    fireEvent.change(screen.getByLabelText('Phone Number'), { target: { value: '+1234567890' } });
+    fireEvent.change(screen.getByLabelText('Date of Birth'), { target: { value: '1990-01-01' } });
 
-      // Simula el envío del formulario
-      fireEvent.click(screen.getByRole('button', { name: 'Send' }));
+    // Simula el envío del formulario
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
 
-      // Verifica que console.log fue llamado con los datos correctos
-      expect(consoleSpy).toHaveBeenCalledWith({
-        fullName: 'John Doe',
-        email: 'john@example.com',
-        password: 'password123',
-        phoneNumber: '+1234567890',
-        dob: '1990-01-01',
-      });
+    // Verifica que console.log fue llamado con los datos correctos
+    expect(consoleSpy).toHaveBeenCalledWith({
+      fullName: 'John Doe',
+      email: 'john@example.com',
+      password: 'password123',
+      phoneNumber: '+1234567890',
+      dob: '1990-01-01',
+    });
 
-      consoleSpy.mockRestore(); // Restaura console.log
-    }
+    consoleSpy.mockRestore(); // Restaura console.log
   });
 
   it('renders the back button and navigates correctly', () => {
