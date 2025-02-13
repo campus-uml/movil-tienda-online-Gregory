@@ -3,8 +3,9 @@
 exports[`Login Component > matches the snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="min-h-screen flex items-center justify-center bg-gray-100 px-4"
+    class="min-h-screen flex items-center justify-center bg-gray-100 px-4 overflow-hidden"
   >
+     
     <form
       class="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg relative"
     >

@@ -2,13 +2,12 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom'; // Importa jest-dom para extender expect
 import Login from '../Login'; // Importa el componente desde el mismo directorio
 
-
-
 describe('Login Component', () => {
-  it("matches the snapshot", () => {
+  it('matches the snapshot', () => {
     const { asFragment } = render(<Login />);
     expect(asFragment()).toMatchSnapshot();
-    });
+  });
+
   it('renders the login form correctly', () => {
     render(<Login />);
 
@@ -60,17 +59,17 @@ describe('Login Component', () => {
   it('submits the form with the correct data', () => {
     const consoleSpy = vi.spyOn(console, 'log'); // Usa vi globalmente
     render(<Login />);
-  
+
     // Simula la entrada de datos
     fireEvent.change(screen.getByLabelText('Full Name'), { target: { value: 'John Doe' } });
     fireEvent.change(screen.getByLabelText('Email'), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText('Password'), { target: { value: 'password123' } });
     fireEvent.change(screen.getByLabelText('Phone Number'), { target: { value: '+1234567890' } });
     fireEvent.change(screen.getByLabelText('Date of Birth'), { target: { value: '1990-01-01' } });
-  
+
     // Simula el envío del formulario
     fireEvent.click(screen.getByRole('button', { name: 'Send' }));
-  
+
     // Verifica que console.log fue llamado con los datos correctos
     expect(consoleSpy).toHaveBeenCalledWith({
       fullName: 'John Doe',
@@ -79,7 +78,16 @@ describe('Login Component', () => {
       phoneNumber: '+1234567890',
       dob: '1990-01-01',
     });
-  
+
     consoleSpy.mockRestore(); // Restaura console.log
+  });
+
+  it('renders the back button and navigates correctly', () => {
+    render(<Login />);
+
+    // Verifica que el botón de retroceso esté presente
+    const backButton = screen.getByRole('link', { name: '' }); // Botón de flecha
+    expect(backButton).toBeInTheDocument();
+    expect(backButton.getAttribute('href')).toBe('/'); // Verifica la ruta de retroceso
   });
 });

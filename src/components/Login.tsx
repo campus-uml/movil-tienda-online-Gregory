@@ -23,10 +23,10 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 overflow-hidden"> {/* Agrega overflow-hidden para evitar el scroll */}
       <form 
         onSubmit={handleSubmit} 
-        className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg relative" // Agrega "relative" aquí
+        className="bg-white p-6 md:p-8 rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg relative"
       >
         {/* Flecha para retroceder dentro del formulario */}
         <a
