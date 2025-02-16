@@ -60,6 +60,9 @@ jobs:
       - name: Run Cypress Component Tests
         run: npx cypress run --component
 
+      - name: Run Cypress E2E Tests
+        run: npx cypress run --e2e
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
