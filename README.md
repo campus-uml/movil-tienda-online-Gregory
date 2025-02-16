@@ -7,3 +7,5 @@ Este es un proyecto de examen para el tercer parcial de **Ingeniería de Sistema
 - 📝 **TypeScript** (Tipado Estático)
 - 💻 **Node.js** (Backend)
 - 🎨 **TailwindCSS** (Framework de Estilos)
+- 💻 **Pruebas unitarias** (Vitest)
+- 💻 **Pruebas e2e** (Cypress)
